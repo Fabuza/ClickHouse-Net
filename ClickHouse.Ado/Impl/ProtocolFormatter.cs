@@ -311,6 +311,9 @@ namespace ClickHouse.Ado.Impl {
         }
 
         public byte[] ReadBytes(int i, int size=-1) {
+            if (i == 0)
+                return new byte[0];
+
             var bytes = new byte[size == -1 ? i : size];
             var read = 0;
             var cur = 0;
